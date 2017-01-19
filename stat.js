@@ -527,6 +527,7 @@ module.exports = function (ctx,req,res) {
         });
 
       res.setHeader('Content-Type', 'application/json');
+      
       res.end(JSON.stringify({response_type: 'in_channel', text: "",attachments: attachments}));
 
       break;
