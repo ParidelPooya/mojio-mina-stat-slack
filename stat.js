@@ -53,6 +53,13 @@ module.exports = function (ctx,req,res) {
 
         attachments.push({
             "color": "#0000FF",
+            "text": jsonObject.Stat.NoLongerActive.toLocaleString('en-US', {minimumFractionDigits: 0}),
+            "footer": "No Longer Active",
+            "footer_icon": "https://cdn2.iconfinder.com/data/icons/4web-3/139/box-128.png",
+        });
+
+        attachments.push({
+            "color": "#0000FF",
             "text": jsonObject.Stat.DrivingRightNow.toLocaleString('en-US', {minimumFractionDigits: 0}),
             "footer": "Currently Driving",
             "footer_icon": "https://cdn4.iconfinder.com/data/icons/car-silhouettes/1000/city-car-128.png",
