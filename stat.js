@@ -44,6 +44,13 @@ module.exports = function (ctx,req,res) {
       var attachments=[];
       
       try{
+        var Desc="";
+        var LastContactTime=new Date(jsonObject.Stat.LastContactTime);
+        var diff = (new Date()) - LastContactTime;
+        if (diff>1000*60*5){
+          Desc="Due to platform delay the below values are for " + moment().add(-diff,'ms').fromNow();
+        } 
+        
         attachments.push({
             "color": "#0000FF",
             "text": jsonObject.Stat.Mojios.toLocaleString('en-US', {minimumFractionDigits: 0}),
