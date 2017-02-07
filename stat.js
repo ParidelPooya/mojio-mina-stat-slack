@@ -46,7 +46,7 @@ module.exports = function (ctx,req,res) {
       try{
         var LastContactTime=new Date(jsonObject.Stat.LastContactTime);
         var diff = (new Date()) - LastContactTime;
-        if (diff>1000*60*5){
+        if (diff>1000*60){
           dataString="Due to platform delay the below values are for " + moment().add(-diff,'ms').fromNow();
         } 
         
