@@ -532,7 +532,7 @@ module.exports = function (ctx,req,res) {
   
   //console.log(ctx);
   
-  var env=ctx.body.command.split(' ')[1].toLowerCase();
+  var env=ctx.body.command.split(' ')[2].toLowerCase();
   var sec=ctx.body.text;
   
   console.log(ctx.body);
