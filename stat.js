@@ -40,19 +40,19 @@ module.exports = function (ctx,req,res) {
           "color": "#0000ff",
           "fields": [
               {
-                  "title": "/wt stat [tmus|tmcz]]",
+                  "title": "/wt [tmus|tmcz]",
                   "value": "Device Info (Total,Driving,Active) and Platform Delay."
               },
               {
-                  "title": "/wt stat [tmus|tmcz]-transport",
+                  "title": "/wt [tmus|tmcz] transport",
                   "value": "Transports Info (iOS, Android, WebSocket, HTTPPOST, MQTT)."
               },
               {
-                  "title": "/wt stat [tmus|tmcz]-api",
+                  "title": "/wt [tmus|tmcz] api",
                   "value": "Api Info (Me, Login, Vehicles, Mojios)."
               },
               {
-                  "title": "/wt stat [tmus|tmcz]-partitions",
+                  "title": "/wt [tmus|tmcz] partitions",
                   "value": "IMEIs (Partitions) Info, including slowest and fastest."
               },
           ]
@@ -535,10 +535,12 @@ module.exports = function (ctx,req,res) {
   var env=ctx.body.command.split(' ')[1].toLowerCase();
   var sec=ctx.body.text;
   
-  console.log(ctx.body);
+  //console.log(ctx.body);
   
   if(sec.length===0)
+  {  
     sec="general";
+  }
   
   if(sec.toLowerCase()!=='help'){
     res.setHeader('Content-Type', 'application/json');
