@@ -543,30 +543,6 @@ module.exports = function (ctx,req,res) {
       res.end(JSON.stringify({response_type: 'in_channel', text: "",attachments: attachments}));
 
       break;
-
-    case 'game':
-      postToSlack({
-          "text": "Would you like to play a game?",
-          "attachments": [
-              {
-                  "text": "Choose a game to play",
-                  "fallback": "You are unable to choose a game",
-                  "callback_id": "wopr_game",
-                  "color": "#3AA3E3",
-                  "attachment_type": "default",
-                  "actions": [
-                      {
-                          "name": "chess",
-                          "text": "Chess",
-                          "type": "button",
-                          "value": "/wt stat help"
-                      }
-                  ]
-              }
-          ]
-      });
-      break;
-      
       
     case 'tmus':
       getGeneral('tmus');
