@@ -544,7 +544,7 @@ module.exports = function (ctx,req,res) {
   
   if(sec.toLowerCase()!=='help'){
     res.setHeader('Content-Type', 'application/json');
-    res.end(JSON.stringify({response_type: 'in_channel', text:":hourglass: Preparing Data For " + sec.split('-')[0].toUpperCase()}));
+    res.end(JSON.stringify({response_type: 'in_channel', text:":hourglass: Preparing Data For " + env}));
   }
   
   switch(sec.toLowerCase()){
