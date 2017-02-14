@@ -34,6 +34,91 @@ module.exports = function (ctx,req,res) {
     return url;    
   };
   
+  var getHelp=function(){
+        var attachments=[];
+        attachments.push({
+          "color": "#0000ff",
+          "fields": [
+              {
+                  "title": "/wt stat [tmus|tmcz]]",
+                  "value": "Device Info (Total,Driving,Active) and Platform Delay."
+              },
+              {
+                  "title": "/wt stat [tmus|tmcz]-transport",
+                  "value": "Transports Info (iOS, Android, WebSocket, HTTPPOST, MQTT)."
+              },
+              {
+                  "title": "/wt stat [tmus|tmcz]-api",
+                  "value": "Api Info (Me, Login, Vehicles, Mojios)."
+              },
+              {
+                  "title": "/wt stat [tmus|tmcz]-partitions",
+                  "value": "IMEIs (Partitions) Info, including slowest and fastest."
+              },
+          ]
+        });
+
+        attachments.push({
+          "color": "#0000ff",
+          "title": "Dashboard for TMUS",
+          "title_link": "http://tmus.status.moj.io/#/dashboard",
+          "text": "http://tmus.status.moj.io/#/dashboard"
+        });
+
+        attachments.push({
+          "color": "#0000ff",
+          "title": "Dashboard for TMCZ",
+          "title_link": "http://tmcz.status.moj.io/#/dashboard",
+          "text": "http://tmcz.status.moj.io/#/dashboard"
+        });
+
+        attachments.push({
+          "color": "#0000ff",
+          "title": "Mina Status for TMUS in RAW JSON",
+          "title_link": "https://mina-us.moj.io/status",
+          "text": "https://mina-us.moj.io/status"
+        });
+
+        attachments.push({
+          "color": "#0000ff",
+          "title": "Mina Status for TMCZ in RAW JSON",
+          "title_link": "https://mina-eu.moj.io/status",
+          "text": "https://mina-eu.moj.io/status"
+        });
+
+        attachments.push({
+          "color": "#0000ff",
+          "title": "Mina Settings for TMUS",
+          "title_link": "https://mina-us.moj.io/settings",
+          "text": "https://mina-us.moj.io/settings"
+        });
+
+        attachments.push({
+          "color": "#0000ff",
+          "title": "Mina Settings for TMCZ",
+          "title_link": "https://mina-eu.moj.io/settings",
+          "text": "https://mina-eu.moj.io/settings"
+        });
+
+        attachments.push({
+          "color": "#0000ff",
+          "title": "Mina incidents list for TMUS",
+          "title_link": "https://mina-us.moj.io/incident",
+          "text": "https://mina-us.moj.io/incident"
+        });
+
+        attachments.push({
+          "color": "#0000ff",
+          "title": "Mina incidents listfor TMCZ",
+          "title_link": "https://mina-us.moj.io/incident",
+          "text": "https://mina-us.moj.io/incident"
+        });
+
+      res.setHeader('Content-Type', 'application/json');
+      res.end(JSON.stringify({response_type: 'in_channel', text: "",attachments: attachments}));
+
+  };
+  
   var getGeneral=function(env){
     
     request(envUrl(env), function (error, response, body) {
@@ -456,91 +541,10 @@ module.exports = function (ctx,req,res) {
     res.setHeader('Content-Type', 'application/json');
     res.end(JSON.stringify({response_type: 'in_channel', text:":hourglass: Preparing Data For " + sec.split('-')[0].toUpperCase()}));
   }
-
-  var attachments=[];
   
   switch(sec.toLowerCase()){
     case 'help':
-        attachments.push({
-          "color": "#0000ff",
-          "fields": [
-              {
-                  "title": "/wt stat [tmus|tmcz]]",
-                  "value": "Device Info (Total,Driving,Active) and Platform Delay."
-              },
-              {
-                  "title": "/wt stat [tmus|tmcz]-transport",
-                  "value": "Transports Info (iOS, Android, WebSocket, HTTPPOST, MQTT)."
-              },
-              {
-                  "title": "/wt stat [tmus|tmcz]-api",
-                  "value": "Api Info (Me, Login, Vehicles, Mojios)."
-              },
-              {
-                  "title": "/wt stat [tmus|tmcz]-partitions",
-                  "value": "IMEIs (Partitions) Info, including slowest and fastest."
-              },
-          ]
-        });
-
-        attachments.push({
-          "color": "#0000ff",
-          "title": "Dashboard for TMUS",
-          "title_link": "http://tmus.status.moj.io/#/dashboard",
-          "text": "http://tmus.status.moj.io/#/dashboard"
-        });
-
-        attachments.push({
-          "color": "#0000ff",
-          "title": "Dashboard for TMCZ",
-          "title_link": "http://tmcz.status.moj.io/#/dashboard",
-          "text": "http://tmcz.status.moj.io/#/dashboard"
-        });
-
-        attachments.push({
-          "color": "#0000ff",
-          "title": "Mina Status for TMUS in RAW JSON",
-          "title_link": "https://mina-us.moj.io/status",
-          "text": "https://mina-us.moj.io/status"
-        });
-
-        attachments.push({
-          "color": "#0000ff",
-          "title": "Mina Status for TMCZ in RAW JSON",
-          "title_link": "https://mina-eu.moj.io/status",
-          "text": "https://mina-eu.moj.io/status"
-        });
-
-        attachments.push({
-          "color": "#0000ff",
-          "title": "Mina Settings for TMUS",
-          "title_link": "https://mina-us.moj.io/settings",
-          "text": "https://mina-us.moj.io/settings"
-        });
-
-        attachments.push({
-          "color": "#0000ff",
-          "title": "Mina Settings for TMCZ",
-          "title_link": "https://mina-eu.moj.io/settings",
-          "text": "https://mina-eu.moj.io/settings"
-        });
-
-        attachments.push({
-          "color": "#0000ff",
-          "title": "Mina incidents list for TMUS",
-          "title_link": "https://mina-us.moj.io/incident",
-          "text": "https://mina-us.moj.io/incident"
-        });
-
-        attachments.push({
-          "color": "#0000ff",
-          "title": "Mina incidents listfor TMCZ",
-          "title_link": "https://mina-us.moj.io/incident",
-          "text": "https://mina-us.moj.io/incident"
-        });
-
-      res.setHeader('Content-Type', 'application/json');
-      res.end(JSON.stringify({response_type: 'in_channel', text: "",attachments: attachments}));
+        getHelp();
 
       break;
       
