@@ -535,7 +535,7 @@ module.exports = function (ctx,req,res) {
   var env=ctx.body.command.split(' ')[1].toLowerCase();
   var sec=ctx.body.text;
   
-  //console.log(ctx.body);
+  console.log(ctx.body);
   
   if(sec.length===0)
   {  
@@ -544,7 +544,7 @@ module.exports = function (ctx,req,res) {
   
   if(sec.toLowerCase()!=='help'){
     res.setHeader('Content-Type', 'application/json');
-    res.end(JSON.stringify({response_type: 'in_channel', text:":hourglass: Preparing Data For " + env}));
+    res.end(JSON.stringify({response_type: 'in_channel', text:":hourglass: Preparing Data For " + sec.split('-')[0].toUpperCase()}));
   }
   
   switch(sec.toLowerCase()){
