@@ -534,6 +534,8 @@ module.exports = function (ctx,req,res) {
   
   var sec=ctx.body.text;
   
+  console.log(ctx.body);
+  
   if(sec.length===0)
     sec="tmus";
   
