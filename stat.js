@@ -544,8 +544,7 @@ module.exports = function (ctx,req,res) {
   
   switch(sec.toLowerCase()){
     case 'help':
-        getHelp();
-
+      getHelp();
       break;
       
     case 'tmus':
