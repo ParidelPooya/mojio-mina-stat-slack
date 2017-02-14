@@ -551,35 +551,19 @@ module.exports = function (ctx,req,res) {
       break;
       
     case 'general':
-      getGeneral('tmus');
+      getGeneral(env);
       break;
       
-    case 'tmus-transport':
-      getTransport('tmus');
+    case 'transport':
+      getTransport(env);
       break;
 
-    case 'tmus-api':
-      getAPI('tmus');
+    case 'api':
+      getAPI(env);
       break;
 
-    case 'tmus-partitions':
-      getPartitions('tmus');
-      break;
-
-    case 'tmcz':
-      getGeneral('tmcz');
-      break;
-      
-    case 'tmcz-transport':
-      getTransport('tmcz');
-      break;
-
-    case 'tmcz-api':
-      getAPI('tmcz');
-      break;
-
-    case 'tmcz-partitions':
-      getPartitions('tmcz');
+    case 'partitions':
+      getPartitions(env);
       break;
 
   }
