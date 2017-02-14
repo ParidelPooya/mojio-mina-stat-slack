@@ -532,12 +532,13 @@ module.exports = function (ctx,req,res) {
   
   //console.log(ctx);
   
+  var env=ctx.body.command.split(' ')[1].toLowerCase();
   var sec=ctx.body.text;
   
   console.log(ctx.body);
   
   if(sec.length===0)
-    sec="tmus";
+    sec="general";
   
   if(sec.toLowerCase()!=='help'){
     res.setHeader('Content-Type', 'application/json');
@@ -549,7 +550,7 @@ module.exports = function (ctx,req,res) {
       getHelp();
       break;
       
-    case 'tmus':
+    case 'general':
       getGeneral('tmus');
       break;
       
